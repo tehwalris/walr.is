@@ -3,10 +3,19 @@ body {
   background: #e7e3ef;
 }
 
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: auto;
+  width: 51rem;
+  /* outline: 1px solid blue; */
+}
+
 .logoWrapper {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 25rem;
+  height: 25rem;
   /* outline: 1px solid green; */
 }
 
@@ -17,40 +26,94 @@ body {
   left: -1.99%;
 }
 
-.contentWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin: auto;
-  width: 700px;
-  min-height: 100vh;
-  /* outline: 1px solid blue; */
-}
-
 .textWrapper {
-  width: 290px;
-  padding-top: 70px;
+  width: 18.2rem;
+  padding-top: 4rem;
   text-align: center;
 }
 
 .titleGroup > .titlePrimary {
   font-family: 'Vidaloka', serif;
-  font-size: 72px;
+  font-size: 4.5rem;
 }
 
 .titleGroup > .titleSecondary {
   display: flex;
   justify-content: space-between;
-  padding-left: 3.5px;
-  padding-right: 3.5px;
+  padding-left: 0.22rem;
+  padding-right: 0.22rem;
   font-family: 'Fira Sans', sans-serif;
-  font-size: 40px;
+  font-size: 2.5rem;
   opacity: 0.28;
 }
 
-.linkLine {
-  margin-top: 50px;
+.linkWrapper {
   font-family: 'Fira Mono', monospace;
-  font-size: 20px;
   opacity: 0.28;
+}
+
+@media (max-width: 715px) {
+  html {
+    font-size: 4vw;
+  }
+
+  .contentWrapper {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .logoWrapper {
+    width: 80vw;
+    height: 80vw;
+    margin-top: 20vw;
+  }
+
+  .textWrapper {
+    padding-top: 2rem;
+  }
+
+  .linkWrapper {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .linkWrapper > .linkLine {
+    display: none;
+  }
+
+  .linkWrapper > .linkStack > div {
+    margin: 0.5rem;
+  }
+}
+
+@media (min-width: 715px) {
+  html {
+    font-size: 14px;
+  }
+
+  .contentWrapper {
+    min-height: 100vh;
+  }
+
+  .linkWrapper {
+    margin-top: 3.1rem;
+    font-size: 1.25rem;
+  }
+
+  .linkWrapper > .linkStack {
+    display: none;
+  }
+}
+
+@media (min-width: 920px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1000px) {
+  html {
+    font-size: 20px;
+  }
 }
