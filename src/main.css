@@ -3,6 +3,11 @@ body {
   background: #e7e3ef;
 }
 
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .contentWrapper {
   display: flex;
   align-items: center;
@@ -16,6 +21,7 @@ body {
   position: relative;
   width: 25rem;
   height: 25rem;
+  pointer-events: none;
   /* outline: 1px solid green; */
 }
 
@@ -49,7 +55,144 @@ body {
 
 .linkWrapper {
   font-family: 'Fira Mono', monospace;
+}
+
+.linkStack > div {
+  cursor: pointer;
+}
+
+.linkStack > div:hover > a {
+  text-decoration: underline;
+}
+
+.linkStack > div:not(:hover) {
   opacity: 0.28;
+}
+
+.linkLine {
+  position: relative;
+  margin-top: -1px; /* removes the hoverable top line on clip paths */
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+}
+
+.linkLineInner-base {
+  transition: opacity 2s ease;
+}
+
+.linkLineInner-overlay {
+  position: absolute;
+  top: 2px; /* removes the hoverable top line on clip paths */
+  left: 0;
+}
+
+.linkLineInner:not(:hover) {
+  opacity: 0.17;
+}
+
+.linkLine:hover .linkLineInner-base {
+  opacity: 0.15;
+}
+
+.linkLine:hover .linkLineInner-overlay:not(:hover) {
+  opacity: 0;
+}
+
+.linkLineInner-base {
+  clip-path: polygon(
+       0em 0%,    0em 100%,  0.6em 100%,  0.6em 0%,
+     0.6em 0%,  0.6em 100%,  1.2em 100%,  1.2em 0%,
+     1.2em 0%,  1.2em 100%,  1.8em 100%,  1.8em 0%,
+     1.8em 0%,  1.8em 100%,  2.4em 100%,  2.4em 0%,
+     2.4em 0%,  2.4em 100%,  3.0em 100%,  3.0em 0%,
+     3.0em 0%,  3.0em 100%,  3.6em 100%,  3.6em 0%,
+     3.6em 0%,  3.6em 100%,  4.2em 100%,  4.2em 0%,
+     4.2em 0%,  4.2em 100%,  4.8em 100%,  4.8em 0%,
+     4.8em 0%,  4.8em 100%,  5.4em 100%,  5.4em 0%,
+     5.4em 0%,  5.4em 100%,  6.0em 100%,  6.0em 0%,
+     6.0em 0%,  6.0em 100%,  6.6em 100%,  6.6em 0%,
+     6.6em 0%,  6.6em 100%,  7.2em 100%,  7.2em 0%,
+     7.2em 0%,  7.2em 100%,  7.8em 100%,  7.8em 0%,
+     7.8em 0%,  7.8em 100%,  8.4em 100%,  8.4em 0%,
+     8.4em 0%,  8.4em 100%,  9.0em 100%,  9.0em 0%,
+     9.0em 0%,  9.0em 100%,  9.6em 100%,  9.6em 0%,
+     9.6em 0%,  9.6em 100%, 10.2em 100%, 10.2em 0%,
+    10.2em 0%, 10.2em 100%, 10.8em 100%, 10.8em 0%,
+    10.8em 0%, 10.8em 100%, 11.4em 100%, 11.4em 0%
+  );
+}
+
+.linkLineInner-email {
+  clip-path: polygon(
+       0em 0%,    0em 100%,  0.6em 100%,  0.6em 0%,
+  /* 0.6em 0%,  0.6em 100%,  1.2em 100%,  1.2em 0%, */
+  /* 1.2em 0%,  1.2em 100%,  1.8em 100%,  1.8em 0%, */
+  /* 1.8em 0%,  1.8em 100%,  2.4em 100%,  2.4em 0%, */
+     2.4em 0%,  2.4em 100%,  3.0em 100%,  3.0em 0%,
+  /* 3.0em 0%,  3.0em 100%,  3.6em 100%,  3.6em 0%, */
+  /* 3.6em 0%,  3.6em 100%,  4.2em 100%,  4.2em 0%, */
+     4.2em 0%,  4.2em 100%,  4.8em 100%,  4.8em 0%,
+  /* 4.8em 0%,  4.8em 100%,  5.4em 100%,  5.4em 0%, */
+  /* 5.4em 0%,  5.4em 100%,  6.0em 100%,  6.0em 0%, */
+     6.0em 0%,  6.0em 100%,  6.6em 100%,  6.6em 0%,
+  /* 6.6em 0%,  6.6em 100%,  7.2em 100%,  7.2em 0%, */
+  /* 7.2em 0%,  7.2em 100%,  7.8em 100%,  7.8em 0%, */
+  /* 7.8em 0%,  7.8em 100%,  8.4em 100%,  8.4em 0%, */
+     8.4em 0%,  8.4em 100%,  9.0em 100%,  9.0em 0%
+  /* 9.0em 0%,  9.0em 100%,  9.6em 100%,  9.6em 0%, */
+  /* 9.6em 0%,  9.6em 100%, 10.2em 100%, 10.2em 0%, */
+  /*10.2em 0%, 10.2em 100%, 10.8em 100%, 10.8em 0%, */
+  /*10.8em 0%, 10.8em 100%, 11.4em 100%, 11.4em 0%  */
+  );
+}
+
+.linkLineInner-linkedin {
+  clip-path: polygon(
+  /*   0em 0%,    0em 100%,  0.6em 100%,  0.6em 0%, */
+     0.6em 0%,  0.6em 100%,  1.2em 100%,  1.2em 0%,
+  /* 1.2em 0%,  1.2em 100%,  1.8em 100%,  1.8em 0%, */
+     1.8em 0%,  1.8em 100%,  2.4em 100%,  2.4em 0%,
+  /* 2.4em 0%,  2.4em 100%,  3.0em 100%,  3.0em 0%, */
+  /* 3.0em 0%,  3.0em 100%,  3.6em 100%,  3.6em 0%, */
+     3.6em 0%,  3.6em 100%,  4.2em 100%,  4.2em 0%,
+  /* 4.2em 0%,  4.2em 100%,  4.8em 100%,  4.8em 0%, */
+  /* 4.8em 0%,  4.8em 100%,  5.4em 100%,  5.4em 0%, */
+  /* 5.4em 0%,  5.4em 100%,  6.0em 100%,  6.0em 0%, */
+  /* 6.0em 0%,  6.0em 100%,  6.6em 100%,  6.6em 0%, */
+     6.6em 0%,  6.6em 100%,  7.2em 100%,  7.2em 0%,
+  /* 7.2em 0%,  7.2em 100%,  7.8em 100%,  7.8em 0%, */
+     7.8em 0%,  7.8em 100%,  8.4em 100%,  8.4em 0%,
+  /* 8.4em 0%,  8.4em 100%,  9.0em 100%,  9.0em 0%, */
+     9.0em 0%,  9.0em 100%,  9.6em 100%,  9.6em 0%,
+  /* 9.6em 0%,  9.6em 100%, 10.2em 100%, 10.2em 0%, */
+    10.2em 0%, 10.2em 100%, 10.8em 100%, 10.8em 0%,
+    10.8em 0%, 10.8em 100%, 11.4em 100%, 11.4em 0%
+  );
+}
+
+.linkLineInner-github {
+  clip-path: polygon(
+  /*   0em 0%,    0em 100%,  0.6em 100%,  0.6em 0%, */
+  /* 0.6em 0%,  0.6em 100%,  1.2em 100%,  1.2em 0%, */
+     1.2em 0%,  1.2em 100%,  1.8em 100%,  1.8em 0%,
+  /* 1.8em 0%,  1.8em 100%,  2.4em 100%,  2.4em 0%, */
+  /* 2.4em 0%,  2.4em 100%,  3.0em 100%,  3.0em 0%, */
+     3.0em 0%,  3.0em 100%,  3.6em 100%,  3.6em 0%,
+  /* 3.6em 0%,  3.6em 100%,  4.2em 100%,  4.2em 0%, */
+  /* 4.2em 0%,  4.2em 100%,  4.8em 100%,  4.8em 0%, */
+     4.8em 0%,  4.8em 100%,  5.4em 100%,  5.4em 0%,
+     5.4em 0%,  5.4em 100%,  6.0em 100%,  6.0em 0%,
+  /* 6.0em 0%,  6.0em 100%,  6.6em 100%,  6.6em 0%, */
+  /* 6.6em 0%,  6.6em 100%,  7.2em 100%,  7.2em 0%, */
+     7.2em 0%,  7.2em 100%,  7.8em 100%,  7.8em 0%,
+  /* 7.8em 0%,  7.8em 100%,  8.4em 100%,  8.4em 0%, */
+  /* 8.4em 0%,  8.4em 100%,  9.0em 100%,  9.0em 0%, */
+  /* 9.0em 0%,  9.0em 100%,  9.6em 100%,  9.6em 0%, */
+     9.6em 0%,  9.6em 100%, 10.2em 100%, 10.2em 0%
+  /*10.2em 0%, 10.2em 100%, 10.8em 100%, 10.8em 0%, */
+  /*10.8em 0%, 10.8em 100%, 11.4em 100%, 11.4em 0%  */
+  );
 }
 
 @media (max-width: 715px) {
@@ -75,7 +218,7 @@ body {
   .linkWrapper {
     margin-top: 2rem;
     margin-bottom: 2rem;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   .linkWrapper > .linkLine {
