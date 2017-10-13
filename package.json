@@ -1,0 +1,25 @@
+{
+  "name": "walr.is",
+  "version": "1.0.0",
+  "description": "walr.is website",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@git.dolansoft.org:23/philippe/walr.is.git"
+  },
+  "scripts": {
+    "build": "brunch build --production",
+    "dev": "brunch watch"
+  },
+  "keywords": [
+    "website",
+    "walr.is",
+    "personal"
+  ],
+  "author": "Philippe \"tehwalris\" Voinov",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "brunch": "^2.10.11",
+    "clean-css-brunch": "^2.10.0",
+    "html-pages-brunch": "^2.6.0"
+  }
+}

@@ -55,6 +55,7 @@ a {
 
 .linkWrapper {
   font-family: 'Fira Mono', monospace;
+  user-select: none;
 }
 
 .linkStack > div {
@@ -92,7 +93,7 @@ a {
 }
 
 .linkLine:hover .linkLineInner-base {
-  opacity: 0.15;
+  opacity: 0.11;
 }
 
 .linkLine:hover .linkLineInner-overlay:not(:hover) {
