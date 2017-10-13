@@ -14,5 +14,8 @@ module.exports = {
         return path.replace(/^src[\/\\](.*)\.html$/, "$1.html");
       },
     },
+    copyfilemon: {
+      "": ["src/fonts"]
+    },
   },
 }
