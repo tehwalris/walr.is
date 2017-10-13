@@ -1,9 +1,56 @@
-/*
-font-family: 'Vidaloka', serif;
-font-family: 'Fira Mono', monospace;
-*/
-
 body {
+  margin: 0;
   background: #e7e3ef;
+}
+
+.logoWrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  /* outline: 1px solid green; */
+}
+
+.logoWrapper > img {
+  position: absolute;
+  width: 103.8%;
+  top: -24.5%;
+  left: -1.99%;
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: auto;
+  width: 700px;
+  min-height: 100vh;
+  /* outline: 1px solid blue; */
+}
+
+.textWrapper {
+  width: 290px;
+  padding-top: 70px;
+  text-align: center;
+}
+
+.titleGroup > .titlePrimary {
+  font-family: 'Vidaloka', serif;
+  font-size: 72px;
+}
+
+.titleGroup > .titleSecondary {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 3.5px;
+  padding-right: 3.5px;
   font-family: 'Fira Sans', sans-serif;
+  font-size: 40px;
+  opacity: 0.28;
+}
+
+.linkLine {
+  margin-top: 50px;
+  font-family: 'Fira Mono', monospace;
+  font-size: 20px;
+  opacity: 0.28;
 }
