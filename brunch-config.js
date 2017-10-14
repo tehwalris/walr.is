@@ -11,11 +11,11 @@ module.exports = {
   plugins: {
     htmlPages: {
       destination(path) {
-        return path.replace(/^src[\/\\](.*)\.html$/, "$1.html");
+        return path.replace(/^src[\/\\](.*)\.html$/, '$1.html');
       },
     },
     copyfilemon: {
-      "": ["src/fonts"]
+      '': ['src/fonts']
     },
   },
 }

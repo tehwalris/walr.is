@@ -25,5 +25,6 @@
     "html-pages-brunch": "^2.6.0",
     "imagemin-brunch": "^1.1.0",
     "imagemin-svgo": "^5.2.2"
-  }
+  },
+  "dependencies": {}
 }
