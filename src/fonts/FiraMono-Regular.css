@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dcf9dbce8d37fd0fa1550f9f6c7864e3797a78c8542153caa998ef49a73eecce
-size 482
+@font-face {
+    font-family: "Fira Mono";
+    src: url("FiraMono-Regular.eot"); /* IE9 */
+    src: url("FiraMono-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("FiraMono-Regular.woff") format("woff"), /* chrome, firefox */
+    url("FiraMono-Regular.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("FiraMono-Regular.svg#Fira Mono") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+

@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:55e0e420f0094e8f81ec814199ac458df0eeab27c53357b2a9b2d9ad8c4f8015
-size 482
+@font-face {
+    font-family: "Fira Sans";
+    src: url("FiraSans-Regular.eot"); /* IE9 */
+    src: url("FiraSans-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("FiraSans-Regular.woff") format("woff"), /* chrome, firefox */
+    url("FiraSans-Regular.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("FiraSans-Regular.svg#Fira Sans") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+

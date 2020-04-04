@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8404ad82550fae66184f264e5dd71336c4c97f7bcf606d55c688549d994525b9
-size 482
+@font-face {
+    font-family: "Vidaloka ";
+    src: url("Vidaloka-Regular.eot"); /* IE9 */
+    src: url("Vidaloka-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("Vidaloka-Regular.woff") format("woff"), /* chrome, firefox */
+    url("Vidaloka-Regular.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("Vidaloka-Regular.svg#Vidaloka ") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+
