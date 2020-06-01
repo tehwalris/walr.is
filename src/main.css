@@ -34,7 +34,6 @@ a {
   margin: auto;
   width: 51rem;
   will-change: opacity;
-  /* outline: 1px solid blue; */
 }
 
 .logoWrapper {
@@ -42,7 +41,6 @@ a {
   width: 25rem;
   height: 25rem;
   pointer-events: none;
-  /* outline: 1px solid green; */
 }
 
 .logoWrapper > img {
@@ -59,7 +57,7 @@ a {
 }
 
 .titleGroup > .titlePrimary {
-  font-family: 'Vidaloka ', serif;
+  font-family: "Vidaloka ", serif;
   font-size: 4.5rem;
 }
 
@@ -68,13 +66,13 @@ a {
   justify-content: space-between;
   padding-left: 0.22rem;
   padding-right: 0.22rem;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
   font-size: 2.5rem;
   opacity: 0.28;
 }
 
 .linkWrapper {
-  font-family: 'Fira Mono', monospace;
+  font-family: "Fira Mono", monospace;
   user-select: none;
 }
 
@@ -102,21 +100,37 @@ a {
   padding-bottom: 2px;
 }
 
-.linkLineInner-base {
-  transition: opacity 2s ease;
+/* HACK
+This placeholder gives the wrapper (.linkLineInner) the correct size.
+The reason that an extra element is used for this (instead of .linkLineInner-base)
+is to avoid issues with placement and animation. Specifically these two issues:
+- The fade out animation of .linkLineInner-base did not work in Chrome
+- The text of .linkLineInner-base and .linkLineInner-overlay was not aligned in Firefox
+*/
+.linkLineInner-placeholder {
+  opacity: 0 !important;
+  pointer-events: none;
+  user-select: none;
 }
 
+.linkLineInner-base {
+  opacity: 0.6;
+  transition: opacity 1s cubic-bezier(0.37, 0.09, 0.25, 0.99);
+}
+
+.linkLineInner-base,
 .linkLineInner-overlay {
   position: absolute;
   left: 0;
+  top: 0;
 }
 
-.linkLineInner:not(:hover) {
-  opacity: 0.17;
+.linkLineInner-overlay:not(:hover) {
+  opacity: 0;
 }
 
 .linkLine:hover .linkLineInner-base {
-  opacity: 0.11;
+  opacity: 0.07;
 }
 
 .linkLine:hover .linkLineInner-overlay:not(:hover) {
@@ -125,97 +139,173 @@ a {
 
 .linkLineInner-base {
   clip-path: polygon(
-       0em 0%,    0em 100%,  0.6em 100%,  0.6em 0%,
-     0.6em 0%,  0.6em 100%,  1.2em 100%,  1.2em 0%,
-     1.2em 0%,  1.2em 100%,  1.8em 100%,  1.8em 0%,
-     1.8em 0%,  1.8em 100%,  2.4em 100%,  2.4em 0%,
-     2.4em 0%,  2.4em 100%,  3.0em 100%,  3.0em 0%,
-     3.0em 0%,  3.0em 100%,  3.6em 100%,  3.6em 0%,
-     3.6em 0%,  3.6em 100%,  4.2em 100%,  4.2em 0%,
-     4.2em 0%,  4.2em 100%,  4.8em 100%,  4.8em 0%,
-     4.8em 0%,  4.8em 100%,  5.4em 100%,  5.4em 0%,
-     5.4em 0%,  5.4em 100%,  6.0em 100%,  6.0em 0%,
-     6.0em 0%,  6.0em 100%,  6.6em 100%,  6.6em 0%,
-     6.6em 0%,  6.6em 100%,  7.2em 100%,  7.2em 0%,
-     7.2em 0%,  7.2em 100%,  7.8em 100%,  7.8em 0%,
-     7.8em 0%,  7.8em 100%,  8.4em 100%,  8.4em 0%,
-     8.4em 0%,  8.4em 100%,  9.0em 100%,  9.0em 0%,
-     9.0em 0%,  9.0em 100%,  9.6em 100%,  9.6em 0%,
-     9.6em 0%,  9.6em 100%, 10.2em 100%, 10.2em 0%,
-    10.2em 0%, 10.2em 100%, 10.8em 100%, 10.8em 0%,
-    10.8em 0%, 10.8em 100%, 11.4em 100%, 11.4em 0%
+    0em 0%,
+    0em 100%,
+    0.6em 100%,
+    0.6em 0%,
+    0.6em 0%,
+    0.6em 100%,
+    1.2em 100%,
+    1.2em 0%,
+    1.2em 0%,
+    1.2em 100%,
+    1.8em 100%,
+    1.8em 0%,
+    1.8em 0%,
+    1.8em 100%,
+    2.4em 100%,
+    2.4em 0%,
+    2.4em 0%,
+    2.4em 100%,
+    3em 100%,
+    3em 0%,
+    3em 0%,
+    3em 100%,
+    3.6em 100%,
+    3.6em 0%,
+    3.6em 0%,
+    3.6em 100%,
+    4.2em 100%,
+    4.2em 0%,
+    4.2em 0%,
+    4.2em 100%,
+    4.8em 100%,
+    4.8em 0%,
+    4.8em 0%,
+    4.8em 100%,
+    5.4em 100%,
+    5.4em 0%,
+    5.4em 0%,
+    5.4em 100%,
+    6em 100%,
+    6em 0%,
+    6em 0%,
+    6em 100%,
+    6.6em 100%,
+    6.6em 0%,
+    6.6em 0%,
+    6.6em 100%,
+    7.2em 100%,
+    7.2em 0%,
+    7.2em 0%,
+    7.2em 100%,
+    7.8em 100%,
+    7.8em 0%,
+    7.8em 0%,
+    7.8em 100%,
+    8.4em 100%,
+    8.4em 0%,
+    8.4em 0%,
+    8.4em 100%,
+    9em 100%,
+    9em 0%,
+    9em 0%,
+    9em 100%,
+    9.6em 100%,
+    9.6em 0%,
+    9.6em 0%,
+    9.6em 100%,
+    10.2em 100%,
+    10.2em 0%,
+    10.2em 0%,
+    10.2em 100%,
+    10.8em 100%,
+    10.8em 0%,
+    10.8em 0%,
+    10.8em 100%,
+    11.4em 100%,
+    11.4em 0%
   );
 }
 
 .linkLineInner-email {
   clip-path: polygon(
-       0em 0%,    0em 100%,  0.6em 100%,  0.6em 0%,
-  /* 0.6em 0%,  0.6em 100%,  1.2em 100%,  1.2em 0%, */
-  /* 1.2em 0%,  1.2em 100%,  1.8em 100%,  1.8em 0%, */
-  /* 1.8em 0%,  1.8em 100%,  2.4em 100%,  2.4em 0%, */
-     2.4em 0%,  2.4em 100%,  3.0em 100%,  3.0em 0%,
-  /* 3.0em 0%,  3.0em 100%,  3.6em 100%,  3.6em 0%, */
-  /* 3.6em 0%,  3.6em 100%,  4.2em 100%,  4.2em 0%, */
-     4.2em 0%,  4.2em 100%,  4.8em 100%,  4.8em 0%,
-  /* 4.8em 0%,  4.8em 100%,  5.4em 100%,  5.4em 0%, */
-  /* 5.4em 0%,  5.4em 100%,  6.0em 100%,  6.0em 0%, */
-     6.0em 0%,  6.0em 100%,  6.6em 100%,  6.6em 0%,
-  /* 6.6em 0%,  6.6em 100%,  7.2em 100%,  7.2em 0%, */
-  /* 7.2em 0%,  7.2em 100%,  7.8em 100%,  7.8em 0%, */
-  /* 7.8em 0%,  7.8em 100%,  8.4em 100%,  8.4em 0%, */
-     8.4em 0%,  8.4em 100%,  9.0em 100%,  9.0em 0%
-  /* 9.0em 0%,  9.0em 100%,  9.6em 100%,  9.6em 0%, */
-  /* 9.6em 0%,  9.6em 100%, 10.2em 100%, 10.2em 0%, */
-  /*10.2em 0%, 10.2em 100%, 10.8em 100%, 10.8em 0%, */
-  /*10.8em 0%, 10.8em 100%, 11.4em 100%, 11.4em 0%  */
+    0em 0%,
+    0em 100%,
+    0.6em 100%,
+    0.6em 0%,
+    2.4em 0%,
+    2.4em 100%,
+    3em 100%,
+    3em 0%,
+    4.2em 0%,
+    4.2em 100%,
+    4.8em 100%,
+    4.8em 0%,
+    6em 0%,
+    6em 100%,
+    6.6em 100%,
+    6.6em 0%,
+    8.4em 0%,
+    8.4em 100%,
+    9em 100%,
+    9em 0%
   );
 }
 
 .linkLineInner-linkedin {
   clip-path: polygon(
-  /*   0em 0%,    0em 100%,  0.6em 100%,  0.6em 0%, */
-     0.6em 0%,  0.6em 100%,  1.2em 100%,  1.2em 0%,
-  /* 1.2em 0%,  1.2em 100%,  1.8em 100%,  1.8em 0%, */
-     1.8em 0%,  1.8em 100%,  2.4em 100%,  2.4em 0%,
-  /* 2.4em 0%,  2.4em 100%,  3.0em 100%,  3.0em 0%, */
-  /* 3.0em 0%,  3.0em 100%,  3.6em 100%,  3.6em 0%, */
-     3.6em 0%,  3.6em 100%,  4.2em 100%,  4.2em 0%,
-  /* 4.2em 0%,  4.2em 100%,  4.8em 100%,  4.8em 0%, */
-  /* 4.8em 0%,  4.8em 100%,  5.4em 100%,  5.4em 0%, */
-  /* 5.4em 0%,  5.4em 100%,  6.0em 100%,  6.0em 0%, */
-  /* 6.0em 0%,  6.0em 100%,  6.6em 100%,  6.6em 0%, */
-     6.6em 0%,  6.6em 100%,  7.2em 100%,  7.2em 0%,
-  /* 7.2em 0%,  7.2em 100%,  7.8em 100%,  7.8em 0%, */
-     7.8em 0%,  7.8em 100%,  8.4em 100%,  8.4em 0%,
-  /* 8.4em 0%,  8.4em 100%,  9.0em 100%,  9.0em 0%, */
-     9.0em 0%,  9.0em 100%,  9.6em 100%,  9.6em 0%,
-  /* 9.6em 0%,  9.6em 100%, 10.2em 100%, 10.2em 0%, */
-    10.2em 0%, 10.2em 100%, 10.8em 100%, 10.8em 0%,
-    10.8em 0%, 10.8em 100%, 11.4em 100%, 11.4em 0%
+    0.6em 0%,
+    0.6em 100%,
+    1.2em 100%,
+    1.2em 0%,
+    1.8em 0%,
+    1.8em 100%,
+    2.4em 100%,
+    2.4em 0%,
+    3.6em 0%,
+    3.6em 100%,
+    4.2em 100%,
+    4.2em 0%,
+    6.6em 0%,
+    6.6em 100%,
+    7.2em 100%,
+    7.2em 0%,
+    7.8em 0%,
+    7.8em 100%,
+    8.4em 100%,
+    8.4em 0%,
+    9em 0%,
+    9em 100%,
+    9.6em 100%,
+    9.6em 0%,
+    10.2em 0%,
+    10.2em 100%,
+    10.8em 100%,
+    10.8em 0%,
+    10.8em 0%,
+    10.8em 100%,
+    11.4em 100%,
+    11.4em 0%
   );
 }
 
 .linkLineInner-github {
   clip-path: polygon(
-  /*   0em 0%,    0em 100%,  0.6em 100%,  0.6em 0%, */
-  /* 0.6em 0%,  0.6em 100%,  1.2em 100%,  1.2em 0%, */
-     1.2em 0%,  1.2em 100%,  1.8em 100%,  1.8em 0%,
-  /* 1.8em 0%,  1.8em 100%,  2.4em 100%,  2.4em 0%, */
-  /* 2.4em 0%,  2.4em 100%,  3.0em 100%,  3.0em 0%, */
-     3.0em 0%,  3.0em 100%,  3.6em 100%,  3.6em 0%,
-  /* 3.6em 0%,  3.6em 100%,  4.2em 100%,  4.2em 0%, */
-  /* 4.2em 0%,  4.2em 100%,  4.8em 100%,  4.8em 0%, */
-     4.8em 0%,  4.8em 100%,  5.4em 100%,  5.4em 0%,
-     5.4em 0%,  5.4em 100%,  6.0em 100%,  6.0em 0%,
-  /* 6.0em 0%,  6.0em 100%,  6.6em 100%,  6.6em 0%, */
-  /* 6.6em 0%,  6.6em 100%,  7.2em 100%,  7.2em 0%, */
-     7.2em 0%,  7.2em 100%,  7.8em 100%,  7.8em 0%,
-  /* 7.8em 0%,  7.8em 100%,  8.4em 100%,  8.4em 0%, */
-  /* 8.4em 0%,  8.4em 100%,  9.0em 100%,  9.0em 0%, */
-  /* 9.0em 0%,  9.0em 100%,  9.6em 100%,  9.6em 0%, */
-     9.6em 0%,  9.6em 100%, 10.2em 100%, 10.2em 0%
-  /*10.2em 0%, 10.2em 100%, 10.8em 100%, 10.8em 0%, */
-  /*10.8em 0%, 10.8em 100%, 11.4em 100%, 11.4em 0%  */
+    1.2em 0%,
+    1.2em 100%,
+    1.8em 100%,
+    1.8em 0%,
+    3em 0%,
+    3em 100%,
+    3.6em 100%,
+    3.6em 0%,
+    4.8em 0%,
+    4.8em 100%,
+    5.4em 100%,
+    5.4em 0%,
+    5.4em 0%,
+    5.4em 100%,
+    6em 100%,
+    6em 0%,
+    7.2em 0%,
+    7.2em 100%,
+    7.8em 100%,
+    7.8em 0%,
+    9.6em 0%,
+    9.6em 100%,
+    10.2em 100%,
+    10.2em 0%
   );
 }
 
