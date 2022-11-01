@@ -21,7 +21,7 @@
     "brunch": "^2.10.11",
     "clean-css-brunch": "^2.10.0",
     "copyfilemon-brunch": "^3.3.0",
-    "fontmin": "^0.9.6",
+    "fontmin": "^0.9.9",
     "html-pages-brunch": "^2.6.0",
     "imagemin-brunch": "^1.1.0",
     "imagemin-svgo": "^5.2.2"
