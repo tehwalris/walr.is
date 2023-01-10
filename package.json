@@ -18,7 +18,7 @@
   "author": "Philippe \"tehwalris\" Voinov",
   "license": "UNLICENSED",
   "devDependencies": {
-    "brunch": "^2.10.11",
+    "brunch": "^2.10.17",
     "clean-css-brunch": "^2.10.0",
     "copyfilemon-brunch": "^3.3.0",
     "fontmin": "^0.9.6",
